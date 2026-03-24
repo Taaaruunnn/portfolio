@@ -1,0 +1,36 @@
+/* Projects.css */
+.projects__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+}
+
+.projects__filter-btn {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: var(--weight-medium);
+    color: var(--text-muted);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    background: transparent;
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-default);
+    text-transform: lowercase;
+}
+
+.projects__filter-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-default);
+}
+
+.projects__filter-btn--active {
+    color: var(--accent-green);
+    border-color: var(--border-accent);
+    background: rgba(0, 255, 136, 0.06);
+}
+
+.projects__empty {
+    padding: var(--space-12);
+}

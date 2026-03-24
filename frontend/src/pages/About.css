@@ -1,0 +1,23 @@
+/* About.css */
+.about-hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-16);
+    align-items: start;
+    padding-top: var(--space-8);
+}
+
+.about-focus-card {
+    padding: var(--space-6);
+}
+
+@media (max-width: 768px) {
+    .about-hero__inner {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+    }
+
+    .hero__term-line {
+        /* Reused from Home.css scope via global */
+    }
+}

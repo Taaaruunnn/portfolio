@@ -1,0 +1,189 @@
+/* LiveLab.css */
+.livelab__container {
+    max-width: 1000px;
+}
+
+/* Tabs */
+.livelab__tabs {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-5);
+    flex-wrap: wrap;
+}
+
+.livelab__tab {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.livelab__tab:hover {
+    border-color: var(--border-accent);
+    color: var(--text-primary);
+}
+
+.livelab__tab--active {
+    background: rgba(0, 255, 136, 0.08);
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+}
+
+.livelab__tab-icon {
+    font-size: 16px;
+}
+
+/* Description */
+.livelab__desc {
+    margin-bottom: var(--space-5);
+    padding: var(--space-4);
+}
+
+/* Controls */
+.livelab__controls {
+    margin-bottom: var(--space-5);
+}
+
+.livelab__phase-bar {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-3);
+}
+
+.livelab__phase-btn {
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.livelab__phase-btn:hover {
+    border-color: var(--border-accent);
+    color: var(--text-primary);
+}
+
+.livelab__phase-btn--active {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+    background: rgba(0, 255, 136, 0.06);
+}
+
+.livelab__step-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.livelab__nav-btn {
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-accent);
+    background: transparent;
+    color: var(--accent-green);
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.livelab__nav-btn:hover:not(:disabled) {
+    background: rgba(0, 255, 136, 0.1);
+}
+
+.livelab__nav-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.livelab__nav-btn--next {
+    font-weight: var(--weight-semi);
+}
+
+.livelab__step-counter {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+/* Output */
+.livelab__output {
+    padding: var(--space-6);
+    min-height: 200px;
+}
+
+.livelab__idle {
+    padding: var(--space-6) 0;
+}
+
+.livelab__result {
+    min-height: 60px;
+}
+
+.livelab__result-desc {
+    padding: var(--space-4);
+    margin-bottom: var(--space-5);
+}
+
+/* ROP layout */
+.livelab__rop {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: var(--space-5);
+}
+
+@media (max-width: 700px) {
+    .livelab__rop {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Gadget callout */
+.livelab__gadget-box {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid var(--border-accent);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+    font-family: var(--font-mono);
+}
+
+.livelab__gadget-addr {
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+}
+
+.livelab__gadget-instr {
+    font-size: var(--text-base);
+    color: var(--accent-green);
+    font-weight: var(--weight-semi);
+}
+
+.livelab__gadget-effect {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+}
+
+/* Bins */
+.livelab__bins {
+    padding: var(--space-4);
+}

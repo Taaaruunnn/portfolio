@@ -1,0 +1,34 @@
+# Environment
+.env
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Database
+*.db
+*.sqlite3
+
+# Uploads (runtime — never commit)
+uploads/
+
+# Logs (runtime)
+logs/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Distribution
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/

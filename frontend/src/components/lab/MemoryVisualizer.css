@@ -1,0 +1,210 @@
+/* MemoryVisualizer.css */
+.mv__table-wrap {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: var(--space-4);
+}
+
+.mv__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+}
+
+.mv__table th {
+    background: var(--bg-elevated);
+    color: var(--text-muted);
+    font-weight: var(--weight-semi);
+    padding: var(--space-2) var(--space-3);
+    text-align: left;
+    border-bottom: 1px solid var(--border-subtle);
+    white-space: nowrap;
+}
+
+.mv__row td {
+    padding: var(--space-2) var(--space-3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    transition: background 0.2s;
+}
+
+.mv__addr {
+    color: var(--text-muted);
+    min-width: 100px;
+}
+
+.mv__label {
+    color: var(--text-secondary);
+    min-width: 100px;
+}
+
+.mv__val {
+    color: var(--accent-green);
+    font-family: var(--font-mono);
+    white-space: nowrap;
+}
+
+.mv__region {
+    color: var(--text-muted);
+}
+
+.mv__data {
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Status icons */
+.mv__status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    white-space: nowrap;
+}
+
+.mv__status-icon {
+    font-size: 11px;
+}
+
+/* Status colours */
+.mv__cell--normal td {
+    background: transparent;
+}
+
+.mv__cell--written td {
+    background: rgba(0, 255, 136, 0.04);
+}
+
+.mv__cell--overflow td {
+    background: rgba(255, 165, 0, 0.08);
+}
+
+.mv__cell--intact td {
+    background: rgba(0, 255, 136, 0.04);
+}
+
+.mv__cell--broken td {
+    background: rgba(255, 100, 0, 0.12);
+}
+
+.mv__cell--corrupted td {
+    background: rgba(255, 0, 0, 0.10);
+}
+
+.mv__cell--hijacked td {
+    background: rgba(255, 0, 0, 0.18);
+}
+
+.mv__cell--freed td {
+    background: rgba(100, 100, 255, 0.06);
+}
+
+.mv__cell--inuse td {
+    background: transparent;
+}
+
+.mv__cell--hijacked .mv__val,
+.mv__cell--corrupted .mv__val {
+    color: var(--accent-orange);
+}
+
+.mv__cell--broken .mv__val {
+    color: var(--accent-orange);
+}
+
+.mv__cell--overflow .mv__val {
+    color: var(--accent-orange);
+}
+
+/* Register file */
+.mv__regs {
+    margin-bottom: var(--space-4);
+}
+
+.mv__regs-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-2);
+}
+
+.mv__regs-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.mv__reg {
+    display: flex;
+    gap: var(--space-2);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: var(--space-1) var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+}
+
+.mv__reg-name {
+    color: var(--text-muted);
+}
+
+.mv__reg-val {
+    color: var(--accent-green);
+}
+
+/* ROP chain sidebar */
+.mv__chain {
+    margin-bottom: var(--space-4);
+}
+
+.mv__chain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mv__chain-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+.mv__chain-item--done {
+    color: var(--accent-green);
+    opacity: 0.7;
+}
+
+.mv__chain-item--current {
+    background: rgba(0, 255, 136, 0.08);
+    border: 1px solid var(--border-accent);
+    color: var(--accent-green);
+    opacity: 1;
+}
+
+.mv__chain-num {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    font-size: 10px;
+    flex-shrink: 0;
+}
+
+.mv__chain-gadget {
+    flex: 1;
+}

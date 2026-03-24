@@ -1,0 +1,76 @@
+/* ErrorBoundary.css */
+.eb__page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+}
+
+.eb__box {
+    max-width: 520px;
+    width: 100%;
+    padding: var(--space-8);
+}
+
+.eb__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+.eb__sig {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    color: var(--accent-orange);
+}
+
+.eb__code {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+}
+
+.eb__title {
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+}
+
+.eb__msg {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-5);
+}
+
+.eb__trace {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--accent-orange);
+    background: rgba(255, 100, 0, 0.05);
+    border-left: 2px solid var(--accent-orange);
+    padding: var(--space-3);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    overflow-x: auto;
+    margin-bottom: var(--space-5);
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.eb__actions {
+    display: flex;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+}
+
+.cyber-btn--outline {
+    background: transparent;
+    border: 1px solid var(--border-accent);
+    color: var(--accent-green);
+}

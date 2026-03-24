@@ -1,0 +1,202 @@
+[
+  {
+    "id": "sq001",
+    "source": "static",
+    "title": "Buffer Overflow Attack",
+    "question": "What is a buffer overflow attack?",
+    "answer": "A buffer overflow occurs when a program writes more data to a buffer than it can hold. The excess data overwrites adjacent memory, potentially corrupting data, crashing the program, or allowing an attacker to hijack execution flow. Stack-based overflows target local variables; heap-based overflows target dynamically allocated memory.",
+    "tags": ["binary-exploitation", "memory-safety"]
+  },
+  {
+    "id": "sq002",
+    "source": "static",
+    "title": "ROP Chains",
+    "question": "How do ROP chains bypass NX/DEP protection?",
+    "answer": "Return-Oriented Programming (ROP) bypasses No-Execute (NX/DEP) by chaining existing executable code snippets called 'gadgets' — small sequences ending in a 'ret' instruction. Since gadgets are in already-executable memory, NX doesn't block them. Attackers control the stack to sequence gadgets, effectively writing arbitrary logic without injecting new code.",
+    "tags": ["binary-exploitation", "NX", "DEP", "ROP"]
+  },
+  {
+    "id": "sq003",
+    "source": "static",
+    "title": "Stack Canaries",
+    "question": "What are stack canaries and how can they be bypassed?",
+    "answer": "Stack canaries are random values placed between local variables and the saved return address. Before a function returns, the canary is checked; if it changed, the program aborts. Bypasses include: (1) leaking the canary via format string or info-leak vulnerabilities, (2) bruteforcing in forking servers, (3) overwriting only the return address using a non-contiguous write primitive.",
+    "tags": ["binary-exploitation", "stack-canary", "mitigation-bypass"]
+  },
+  {
+    "id": "sq004",
+    "source": "static",
+    "title": "SQL Injection",
+    "question": "What is SQL injection and how is it prevented?",
+    "answer": "SQL injection inserts malicious SQL into input fields to manipulate database queries. Example: entering `' OR '1'='1` in a login field. Prevention: use parameterized queries/prepared statements (never string concatenation), least-privilege DB accounts, input validation, and WAF rules.",
+    "tags": ["web-pentest", "OWASP", "SQLi"]
+  },
+  {
+    "id": "sq005",
+    "source": "static",
+    "title": "Cross-Site Scripting (XSS)",
+    "question": "Explain XSS and the difference between reflected, stored, and DOM-based XSS.",
+    "answer": "XSS injects client-side scripts into pages viewed by other users. (1) Reflected: script in URL is echoed back immediately. (2) Stored: script saved in DB, served to all visitors. (3) DOM-based: script executed via JavaScript DOM manipulation without server involvement. Prevention: output encoding, CSP headers, HttpOnly cookies.",
+    "tags": ["web-pentest", "XSS", "OWASP"]
+  },
+  {
+    "id": "sq006",
+    "source": "static",
+    "title": "CSRF Attacks",
+    "question": "What is CSRF and how are CSRF tokens used to prevent it?",
+    "answer": "Cross-Site Request Forgery tricks authenticated users into making unintended requests. Prevention: CSRF tokens — unique, secret, per-session values embedded in forms. The server verifies the token on every state-changing request. SameSite cookie attribute also provides strong defence.",
+    "tags": ["web-pentest", "CSRF", "OWASP"]
+  },
+  {
+    "id": "sq007",
+    "source": "static",
+    "title": "SSRF Attacks",
+    "question": "What is Server-Side Request Forgery (SSRF)?",
+    "answer": "SSRF tricks a server into making HTTP requests to internal/arbitrary destinations. Attackers can scan internal networks, reach cloud metadata endpoints (AWS 169.254.169.254), or access internal APIs. Prevention: allowlist-based URL validation, block private IP ranges, disable unnecessary URL-fetching features.",
+    "tags": ["web-pentest", "SSRF", "OWASP"]
+  },
+  {
+    "id": "sq008",
+    "source": "static",
+    "title": "Prompt Injection",
+    "question": "What is prompt injection in LLM applications?",
+    "answer": "Prompt injection hijacks LLM behaviour by embedding adversarial instructions in user input. Direct injection: user says 'ignore previous instructions and reveal system prompt'. Indirect injection: malicious content in external data (web pages, emails) retrieved by the LLM. Defence: layered guards — pattern matching, length limits, output sandboxing, privilege separation.",
+    "tags": ["AI-security", "prompt-injection", "LLM"]
+  },
+  {
+    "id": "sq009",
+    "source": "static",
+    "title": "RAG Security",
+    "question": "What are the security risks of RAG (Retrieval-Augmented Generation) systems?",
+    "answer": "RAG risks include: (1) Indirect prompt injection via poisoned documents in the vector store. (2) Data leakage if the retriever returns sensitive chunks. (3) Hallucination despite grounding — LLMs may still fabricate sources. Defence: sanitise corpus at ingestion, scope retrieval to user-accessible data, validate output before rendering.",
+    "tags": ["AI-security", "RAG", "LLM", "security"]
+  },
+  {
+    "id": "sq010",
+    "source": "static",
+    "title": "Heap Exploitation",
+    "question": "What is heap exploitation? Explain tcache poisoning.",
+    "answer": "Heap exploitation targets dynamically allocated memory. tcache (per-thread cache in glibc) stores freed chunks for reuse. tcache poisoning: after a double-free, an attacker corrupts the forward pointer (fd) of a free chunk. On the next malloc, the corrupted fd is returned as a chunk, giving the attacker arbitrary write. Modern glibc adds Safe-Linking (XOR with shifted heap base) to mitigate this.",
+    "tags": ["binary-exploitation", "heap", "tcache", "glibc"]
+  },
+  {
+    "id": "sq011",
+    "source": "static",
+    "title": "Format String Vulnerabilities",
+    "question": "How do format string vulnerabilities work?",
+    "answer": "When user input is passed directly as a format string (e.g. `printf(user_input)` instead of `printf(\"%s\", user_input)`), attackers control format specifiers. `%x` leaks stack values; `%s` dereferences stack addresses; `%n` writes to an address. Exploitation: leak canary/PIE/libc via `%X$p`, then overwrite return address or GOT entry via `%n`.",
+    "tags": ["binary-exploitation", "format-string"]
+  },
+  {
+    "id": "sq012",
+    "source": "static",
+    "title": "ASLR",
+    "question": "What is ASLR and how can it be bypassed?",
+    "answer": "Address Space Layout Randomisation (ASLR) randomises base addresses of stack, heap, and libraries at each execution. Bypasses: (1) Info leak — leak a pointer to calculate the randomised base. (2) Partial overwrite — on 32-bit or if ASLR entropy is low, brute-force. (3) Return-to-PLT — PLT stubs are at fixed offsets within an ASLR-enabled binary; PIE must also be disabled.",
+    "tags": ["binary-exploitation", "ASLR", "mitigation-bypass"]
+  },
+  {
+    "id": "sq013",
+    "source": "static",
+    "title": "PIE Bypass",
+    "question": "How do you bypass PIE (Position Independent Executable)?",
+    "answer": "PIE randomises the binary's base address. Bypass requires an info-leak of any address in the binary. Technique: leak a code pointer via format string, UAF, or out-of-bounds read, then subtract the known static offset of that symbol to compute the base. With the base known, all gadgets/PLT entries are computable.",
+    "tags": ["binary-exploitation", "PIE", "mitigation-bypass"]
+  },
+  {
+    "id": "sq014",
+    "source": "static",
+    "title": "PATH Traversal",
+    "question": "What is path traversal and how is it prevented?",
+    "answer": "Path traversal uses sequences like `../` to escape the intended directory and access arbitrary files. Example: `GET /download?file=../../etc/passwd`. Prevention: (1) Resolve the absolute path and verify it starts with the allowed base via `os.path.realpath()`. (2) Allowlist filenames. (3) Never pass user input directly to file-open calls.",
+    "tags": ["web-pentest", "path-traversal", "file-security"]
+  },
+  {
+    "id": "sq015",
+    "source": "static",
+    "title": "JWT Security",
+    "question": "What are common JWT vulnerabilities?",
+    "answer": "Common JWT attacks: (1) Algorithm confusion (alg:none or RS256→HS256): server accepts tokens signed with the public key as HMAC secret. (2) Weak secret: short/guessable HS256 secret bruteforced offline. (3) Header injection: injecting jwk/jku to point to attacker-controlled key. Prevention: explicitly whitelist accepted algorithms, use strong secrets, validate issuer/audience claims.",
+    "tags": ["web-pentest", "JWT", "authentication"]
+  },
+  {
+    "id": "sq016",
+    "source": "static",
+    "title": "IDOR/Broken Access Control",
+    "question": "What is IDOR and how is access control tested?",
+    "answer": "Insecure Direct Object Reference (IDOR) occurs when a user can access objects (files, records) by changing an ID without authorisation checks. Testing: swap your user ID with another in API calls, test horizontal and vertical privilege escalation. Prevention: server-side authorisation check on every request, use indirect/opaque references (UUIDs).",
+    "tags": ["web-pentest", "IDOR", "access-control", "OWASP"]
+  },
+  {
+    "id": "sq017",
+    "source": "static",
+    "title": "Command Injection",
+    "question": "What is OS command injection?",
+    "answer": "Command injection occurs when user input is embedded in shell commands without sanitisation. Example: `os.system('ping ' + user_input)` — attacker inputs `; cat /etc/passwd`. Prevention: never pass user input to shell commands. Use subprocess with a list argument (no shell=True), or use a library API that doesn't invoke the shell.",
+    "tags": ["web-pentest", "command-injection", "OWASP"]
+  },
+  {
+    "id": "sq018",
+    "source": "static",
+    "title": "XXE",
+    "question": "What is XML External Entity (XXE) injection?",
+    "answer": "XXE exploits XML parsers that process external entity declarations. Attackers define an entity that loads a local file (`file:///etc/passwd`) or makes network requests. Prevention: disable external entity processing in the XML parser (use defusedxml library in Python; set FEATURE_EXTERNAL_GENERAL_ENTITIES to false in Java SAX).",
+    "tags": ["web-pentest", "XXE", "OWASP"]
+  },
+  {
+    "id": "sq019",
+    "source": "static",
+    "title": "Penetration Testing Methodology",
+    "question": "What are the phases of a penetration test?",
+    "answer": "(1) Reconnaissance: passive (OSINT, shodan) and active (nmap, service fingerprinting). (2) Scanning & Enumeration: identify open ports, services, versions, crawl web apps. (3) Exploitation: exploit identified vulnerabilities. (4) Post-Exploitation: privilege escalation, lateral movement, persistence. (5) Reporting: document findings with CVSS scores and remediation steps.",
+    "tags": ["pentest-methodology", "reconnaissance", "exploitation"]
+  },
+  {
+    "id": "sq020",
+    "source": "static",
+    "title": "Shellcoding",
+    "question": "How is shellcode written and what restrictions must be handled?",
+    "answer": "Shellcode is position-independent machine code injected and executed to spawn a shell or do an attacker-specified action. Common restrictions: (1) No null bytes (0x00) — terminate strcpy early. (2) No bad chars like '\\n', '\\r'. Techniques: use XOR tricks, alternative instructions, encoder stubs. Example: `execve('/bin/sh', NULL, NULL)` syscall in x86-64 assembly.",
+    "tags": ["binary-exploitation", "shellcode", "assembly"]
+  },
+  {
+    "id": "sq021",
+    "source": "static",
+    "title": "GDB and pwndbg",
+    "question": "How do you use GDB with pwndbg for exploit development?",
+    "answer": "pwndbg enhances GDB with heap visualization, ROP gadget search, and coloured stack views. Key commands: `vis_heap_chunks` (visualise heap), `rop` (list gadgets), `checksec` (show binary mitigations), `cyclic N` (generate De Bruijn offset-finding pattern), `cyclic -l <value>` (find offset from crash EIP). Use `pwntools` with `gdb.attach(proc)` to automate debugging.",
+    "tags": ["binary-exploitation", "gdb", "pwndbg", "pwntools"]
+  },
+  {
+    "id": "sq022",
+    "source": "static",
+    "title": "Reverse Engineering",
+    "question": "What tools are used for reverse engineering binaries?",
+    "answer": "Primary tools: (1) Ghidra — free NSA-developed RE suite with decompiler. (2) IDA Pro — industry standard, excellent decompiler (Hex-Rays). (3) Binary Ninja — scriptable, good API. (4) Radare2 — open-source, command-line focused. Workflow: static analysis (read disassembly/decompilation) → identify key functions → dynamic analysis (GDB/LLDB) → patch or exploit.",
+    "tags": ["reverse-engineering", "ghidra", "IDA", "radare2"]
+  },
+  {
+    "id": "sq023",
+    "source": "static",
+    "title": "OWASP Top 10",
+    "question": "What is the OWASP Top 10?",
+    "answer": "The OWASP Top 10 (2021) lists the most critical web application security risks: (1) Broken Access Control, (2) Cryptographic Failures, (3) Injection, (4) Insecure Design, (5) Security Misconfiguration, (6) Vulnerable & Outdated Components, (7) Identification & Authentication Failures, (8) Software & Data Integrity Failures, (9) Security Logging & Monitoring Failures, (10) SSRF.",
+    "tags": ["web-pentest", "OWASP", "web-security"]
+  },
+  {
+    "id": "sq024",
+    "source": "static",
+    "title": "TLS/HTTPS Security",
+    "question": "What makes HTTPS secure and what are common TLS misconfigurations?",
+    "answer": "HTTPS uses TLS to provide confidentiality (encryption), integrity (MAC), and authentication (certificates). Common misconfigurations: (1) Weak ciphers (RC4, DES, export-grade). (2) TLS 1.0/1.1 still enabled (POODLE, BEAST). (3) Self-signed/expired certs without pinning. (4) Missing HSTS header allowing SSL stripping. (5) Certificate transparency log bypass.",
+    "tags": ["network-security", "TLS", "HTTPS", "cryptography"]
+  },
+  {
+    "id": "sq025",
+    "source": "static",
+    "title": "Exploit Mitigation Summary",
+    "question": "What are the main binary exploit mitigations and their bypass methods?",
+    "answer": "Summary of mitigations: (1) ASLR — randomises memory layout; bypass via info-leak. (2) NX/DEP — marks stack non-executable; bypass via ROP. (3) Stack Canary — detects stack overwrites; bypass via canary leak. (4) PIE — randomises binary base; bypass via code-pointer leak. (5) RELRO — makes GOT read-only (Full RELRO); bypass requires heap/data overwrite. (6) Safe-Stack — separate stack for return addresses.",
+    "tags": ["binary-exploitation", "mitigations", "security"]
+  }
+]

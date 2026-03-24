@@ -1,0 +1,246 @@
+/* ═══════════════════════════════════════════════════════════════
+   theme.css — Design System Foundation
+   Cybersecurity Portfolio · Dark Premium Theme
+   ═══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+/* ── CSS Custom Properties ─────────────────────────────────────── */
+:root {
+  /* Colors — Background */
+  --bg-primary: #000000;
+  --bg-secondary: #050505;
+  --bg-elevated: #0a0a0a;
+  --bg-card: rgba(10, 10, 10, 0.80);
+  --bg-overlay: rgba(0, 0, 0, 0.95);
+
+  /* Colors — Accent (Red theme override) */
+  --accent-green: #ff003c;
+  /* Re-mapped to primary red to avoid chasing react imports */
+  --accent-blue: #ff3366;
+  /* Secondary red/pink */
+  --accent-purple: #cc0000;
+  /* Deep red */
+  --accent-orange: #ff4400;
+  /* Orange-red */
+
+  /* Colors — Glow (for box-shadow) */
+  --glow-green: rgba(255, 0, 60, 0.18);
+  --glow-blue: rgba(255, 51, 102, 0.18);
+  --glow-purple: rgba(204, 0, 0, 0.18);
+
+  /* Colors — Text */
+  --text-primary: #f8f8f8;
+  --text-secondary: #b0b0b0;
+  --text-muted: #666666;
+  --text-accent: #ff003c;
+
+  /* Colors — Border */
+  --border-subtle: rgba(255, 255, 255, 0.04);
+  --border-default: rgba(255, 255, 255, 0.08);
+  --border-accent: rgba(255, 0, 60, 0.30);
+
+  /* Typography */
+  --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-display: 'Anton', system-ui, sans-serif;
+
+  /* Font Sizes (fluid type scale) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  /* Font Weights */
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semi: 600;
+  --weight-bold: 700;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-glow-green: 0 0 24px var(--glow-green), 0 0 48px rgba(255, 0, 60, 0.08);
+  --shadow-glow-blue: 0 0 24px var(--glow-blue), 0 0 48px rgba(255, 51, 102, 0.08);
+
+  /* Transitions */
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+
+  /* Layout */
+  --container-max: 1200px;
+  --navbar-height: 68px;
+}
+
+/* ── CSS Reset ─────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  font-weight: var(--weight-normal);
+  color: var(--text-primary);
+  background-color: transparent;
+  /* Changed from var(--bg-primary) so global video shows through */
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Base Elements ─────────────────────────────────────────────── */
+a {
+  color: var(--accent-green);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-default);
+}
+
+a:hover {
+  color: var(--accent-blue);
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--weight-bold);
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ── Layout Utilities ──────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+.section {
+  padding-block: var(--space-20);
+}
+
+.section-sm {
+  padding-block: var(--space-12);
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-green);
+}
+
+/* ── Selection ─────────────────────────────────────────────────── */
+::selection {
+  background: rgba(255, 0, 60, 0.25);
+  color: var(--text-primary);
+}
+
+/* ── Focus Ring ────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent-green);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Page Content Offset ───────────────────────────────────────── */
+.page-content {
+  padding-top: var(--navbar-height);
+  min-height: 100vh;
+}

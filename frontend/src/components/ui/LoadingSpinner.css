@@ -1,0 +1,85 @@
+/* LoadingSpinner.css */
+.spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    padding: var(--space-10);
+}
+
+.spinner--sm {
+    padding: var(--space-6);
+}
+
+.spinner--lg {
+    padding: var(--space-16);
+}
+
+.spinner__ring {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--border-subtle);
+    border-top-color: var(--accent-green);
+    animation: spin 1s linear infinite;
+    position: absolute;
+}
+
+.spinner--sm .spinner__ring {
+    width: 24px;
+    height: 24px;
+}
+
+.spinner--lg .spinner__ring {
+    width: 60px;
+    height: 60px;
+}
+
+.spinner__ring--2 {
+    width: 30px;
+    height: 30px;
+    border-top-color: var(--accent-blue);
+    animation-duration: 0.7s;
+    animation-direction: reverse;
+}
+
+.spinner--sm .spinner__ring--2 {
+    width: 16px;
+    height: 16px;
+}
+
+.spinner--lg .spinner__ring--2 {
+    width: 46px;
+    height: 46px;
+}
+
+.spinner {
+    position: relative;
+}
+
+.spinner__ring,
+.spinner__ring--2 {
+    position: absolute;
+}
+
+.spinner__label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    margin-top: 56px;
+}
+
+.spinner--sm .spinner__label {
+    margin-top: 36px;
+}
+
+.spinner--lg .spinner__label {
+    margin-top: 80px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

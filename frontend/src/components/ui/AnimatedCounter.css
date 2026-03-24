@@ -1,0 +1,40 @@
+/* AnimatedCounter.css */
+.counter {
+    text-align: center;
+    padding: var(--space-6);
+}
+
+.counter__value {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2px;
+    line-height: 1;
+}
+
+.counter__number {
+    font-family: var(--font-mono);
+    font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+    font-weight: var(--weight-bold);
+    color: var(--accent-green);
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+    transition: color 0.1s;
+}
+
+.counter__prefix,
+.counter__suffix {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xl);
+    font-weight: var(--weight-bold);
+    color: var(--accent-green);
+    opacity: 0.8;
+}
+
+.counter__label {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    margin-top: var(--space-2);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: var(--weight-medium);
+}
