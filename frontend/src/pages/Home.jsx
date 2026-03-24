@@ -63,7 +63,7 @@ export default function Home() {
                             </div>
                             <div className="id-card-info">
                                 <h2 className="id-card-name">Tarun Singh</h2>
-                                <p className="id-card-role">Security Engineer <br /><span><a href="mailto:tarun@example.com">tarun@example.com</a></span></p>
+                                <p className="id-card-role">Security Engineer <br /><span><a href="mailto:taaaruunnn@gmail.com">taaaruunnn@gmail.com</a> | 7006562435</span></p>
                                 <p className="id-card-desc">
                                     I build secure systems, break insecure ones, and document everything. Specialized in binary exploitation, web penetration testing, and AI-assisted security research.
                                 </p>

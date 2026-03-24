@@ -4,8 +4,8 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import './Footer.css'
 
 const FOOTER_LINKS = [
-    { href: 'https://github.com', label: 'GitHub' },
-    { href: 'https://linkedin.com', label: 'LinkedIn' },
+    { href: 'https://github.com/Taaaruunnn', label: 'GitHub' },
+    { href: 'https://www.linkedin.com/in/taaaruunnn', label: 'LinkedIn' },
 ]
 
 const NAV_LINKS = [

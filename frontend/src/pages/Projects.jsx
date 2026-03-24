@@ -109,7 +109,7 @@ export default function Projects() {
                                             </div>
                                             <div className="project-card__links">
                                                 {p.github_url && (
-                                                    <a href={p.github_url} target="_blank" rel="noopener noreferrer" className="project-card__link">
+                                                    <a href="https://github.com/Taaaruunnn" target="_blank" rel="noopener noreferrer" className="project-card__link">
                                                         GitHub →
                                                     </a>
                                                 )}
