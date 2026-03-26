@@ -6,7 +6,7 @@ const PROJECTS = [
     {
         id: 'madad-karo',
         title: 'Madad Karo Foundation',
-        date: 'Mar 2025',
+        date: 'Mar 2026',
         preview: {
             heading: 'Features',
             items: ['Donor Management', 'Volunteer Registration', 'Event Coordination', 'Community Outreach'],
@@ -67,9 +67,7 @@ export default function Projects() {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <h1 className="projects__title">
-                            <span className="projects__title-hash">#</span> Deployed_Operations
-                        </h1>
+                        <h1 className="projects__title">Projects</h1>
                         <div className="projects__title-line" />
                     </motion.div>
 
@@ -106,9 +104,7 @@ export default function Projects() {
                                 {/* Card content */}
                                 <div className="op-card__content">
                                     <div className="op-card__top-row">
-                                        <h2 className="op-card__name">
-                                            <span className="op-card__lock">🔒</span> {p.title}
-                                        </h2>
+                                        <h2 className="op-card__name">{p.title}</h2>
                                         <a
                                             href={p.github_url}
                                             target="_blank"
@@ -121,9 +117,7 @@ export default function Projects() {
                                         </a>
                                     </div>
 
-                                    <div className="op-card__date">
-                                        <span className="op-card__date-icon">📅</span> {p.date}
-                                    </div>
+                                    <div className="op-card__date">{p.date}</div>
 
                                     <ul className="op-card__bullets">
                                         {p.bullets.map((b, bi) => (
