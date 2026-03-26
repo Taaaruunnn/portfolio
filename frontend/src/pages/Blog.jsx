@@ -1,96 +1,67 @@
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { getBlogPosts } from '@/services/api'
-import LoadingSpinner from '@/components/ui/LoadingSpinner'
+import { motion } from 'framer-motion'
+import BLOG_POSTS from '@/data/blogData'
 import './Blog.css'
 
+const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: i => ({
+        opacity: 1,
+        y: 0,
+        transition: { delay: i * 0.12, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
+    }),
+}
+
 export default function Blog() {
-    const [posts, setPosts] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
-
-    useEffect(() => {
-        let cancelled = false
-        setLoading(true)
-
-        getBlogPosts()
-            .then(res => {
-                if (!cancelled) setPosts(res.data.items || [])
-            })
-            .catch(err => {
-                if (!cancelled)
-                    setError(
-                        err?.type === 'network'
-                            ? 'Backend offline — start Flask on :5000.'
-                            : err?.message || 'Failed to load posts.'
-                    )
-            })
-            .finally(() => { if (!cancelled) setLoading(false) })
-
-        return () => { cancelled = true }
-    }, [])
-
     return (
         <main className="page-content">
             <section className="section">
                 <div className="container">
 
-                    <div className="section-header animate-fade-up">
+                    <motion.div
+                        className="section-header"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
                         <p className="section-label">Writing</p>
                         <h1 className="section-title">Security Blog</h1>
                         <p className="section-subtitle">Writeups, techniques, and research notes.</p>
-                    </div>
+                    </motion.div>
 
-                    {loading && <LoadingSpinner label="Loading posts…" />}
-
-                    {error && !loading && (
-                        <div className="terminal-box animate-fade-up">
-                            <p style={{ color: 'var(--accent-orange)', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)' }}>
-                                ✗ {error}
-                            </p>
-                        </div>
-                    )}
-
-                    {!loading && !error && posts.length === 0 && (
-                        <div className="terminal-box animate-fade-up">
-                            <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: 'var(--text-sm)' }}>
-                                $ ls blog/ → (empty) — publish posts via the admin API
-                            </p>
-                        </div>
-                    )}
-
-                    {!loading && !error && posts.length > 0 && (
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-5)' }}>
-                            {posts.map((post, i) => (
-                                <article key={post.id} className={`glass-card blog-post animate-fade-up delay-${Math.min((i + 1) * 100, 500)}`}>
-                                    <div className="blog-post__inner">
-                                        <div className="blog-post__meta">
-                                            <time className="blog-post__date">{post.created_at?.slice(0, 10) ?? '—'}</time>
-                                            {post.read_time && (
-                                                <span className="blog-post__read">{post.read_time} read</span>
-                                            )}
-                                        </div>
-                                        <h2 className="blog-post__title">
-                                            <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-                                        </h2>
-                                        {post.excerpt && (
-                                            <p className="blog-post__excerpt">{post.excerpt}</p>
-                                        )}
-                                        <div className="blog-post__footer">
-                                            <div className="blog-post__tags">
-                                                {(post.tags || []).map(t => (
-                                                    <span key={t} className="cyber-badge">{t}</span>
-                                                ))}
-                                            </div>
-                                            <Link to={`/blog/${post.slug}`} className="blog-post__read-link neon-text">
-                                                Read more →
-                                            </Link>
-                                        </div>
+                    <div className="blog__list">
+                        {BLOG_POSTS.map((post, i) => (
+                            <motion.article
+                                key={post.id}
+                                className="glass-card blog-card"
+                                custom={i}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, amount: 0.2 }}
+                                variants={cardVariants}
+                                whileHover={{ scale: 1.01, transition: { duration: 0.25 } }}
+                            >
+                                <Link to={`/blog/${post.slug}`} className="blog-card__link">
+                                    <div className="blog-card__meta">
+                                        <time className="blog-card__date">{post.date}</time>
+                                        <span className="blog-card__read">{post.read_time} read</span>
                                     </div>
-                                </article>
-                            ))}
-                        </div>
-                    )}
+
+                                    <h2 className="blog-card__title">{post.title}</h2>
+                                    <p className="blog-card__excerpt">{post.excerpt}</p>
+
+                                    <div className="blog-card__footer">
+                                        <div className="blog-card__tags">
+                                            {post.tags.map(t => (
+                                                <span key={t} className="cyber-badge">{t}</span>
+                                            ))}
+                                        </div>
+                                        <span className="blog-card__cta neon-text">Read more →</span>
+                                    </div>
+                                </Link>
+                            </motion.article>
+                        ))}
+                    </div>
 
                 </div>
             </section>
