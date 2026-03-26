@@ -124,7 +124,7 @@ export default function Projects() {
                                     <ul className="op-card__bullets">
                                         {p.bullets.map((b, bi) => (
                                             <li key={bi}>
-                                                <span className="op-card__bullet-chevron">›</span>
+                                                <span className="op-card__bullet-chevron">→</span>
                                                 <span>{b}</span>
                                             </li>
                                         ))}
