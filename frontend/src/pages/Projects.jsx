@@ -83,6 +83,8 @@ export default function Projects() {
                                 viewport={{ once: true, amount: 0.2 }}
                                 variants={cardVariants}
                                 whileHover={{ scale: 1.015, transition: { duration: 0.3 } }}
+                                onClick={() => window.open(p.github_url, '_blank')}
+                                style={{ cursor: 'pointer' }}
                             >
                                 {/* Terminal preview */}
                                 <div className="op-card__preview">
