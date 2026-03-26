@@ -6,35 +6,44 @@ const PROJECTS = [
     {
         id: 'madad-karo',
         title: 'Madad Karo Foundation',
-        description: 'A web platform for a charitable foundation that connects donors and volunteers to social causes. Built to streamline donations, volunteer sign-ups, and community outreach.',
-        details: 'This full-stack platform was built to digitize the operations of a social impact foundation. It features donor management, volunteer registration, event coordination, and real-time community messaging — designed for accessibility and ease of use.',
-        tags: ['web-dev', 'social-impact', 'full-stack'],
+        date: 'Mar 2025',
+        preview: {
+            heading: 'Features',
+            items: ['Donor Management', 'Volunteer Registration', 'Event Coordination', 'Community Outreach'],
+        },
+        bullets: [
+            'Built a full-stack web platform for a charitable foundation connecting donors and volunteers to social causes.',
+            'Designed streamlined workflows for donation processing, volunteer sign-ups, and real-time community messaging.',
+            'Applied responsive design principles for accessibility across devices, targeting rural and mobile-first audiences.',
+        ],
+        tech: ['HTML/CSS', 'JavaScript', 'Full-Stack'],
         github_url: 'https://github.com/Taaaruunnn/Madad-Kar-Foundation/tree/main/madad%20kar%20foundation',
     },
     {
         id: 'watchdog',
         title: 'WatchDog',
-        description: 'A system monitoring and security watchdog tool that tracks processes, network connections, and suspicious activity on a host machine in real time.',
-        details: 'WatchDog is a lightweight Python-based security tool designed for real-time host monitoring. It captures running processes, active network connections, and flags anomalous activity such as unknown outbound connections or high-privilege process spawns.',
-        tags: ['security', 'monitoring', 'python'],
+        date: 'Feb 2025',
+        preview: {
+            heading: 'Monitors',
+            items: ['Process Activity', 'Network Connections', 'Suspicious Behaviour', 'Privilege Escalation'],
+        },
+        bullets: [
+            'Developed a real-time system monitoring and security watchdog tool tracking processes, network connections, and suspicious host activity.',
+            'Structured alerts to flag anomalous outbound connections and high-privilege process spawns for targeted manual investigation.',
+            'Tested on live environments to validate detection of common attack patterns and post-exploitation indicators.',
+        ],
+        tech: ['Python', 'Security', 'Monitoring'],
         github_url: 'https://github.com/Taaaruunnn/WatchDog',
     },
 ]
 
-/* ── Card variants ─────────────────────────────────────────── */
 const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 50 },
     visible: i => ({
         opacity: 1,
         y: 0,
-        transition: { delay: i * 0.15, duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] },
+        transition: { delay: i * 0.2, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] },
     }),
-}
-
-const overlayVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.25 } },
-    exit: { opacity: 0, transition: { duration: 0.2 } },
 }
 
 const modalVariants = {
@@ -51,75 +60,90 @@ export default function Projects() {
             <section className="section">
                 <div className="container">
 
+                    {/* ── Header ──────────────────────────── */}
                     <motion.div
-                        className="section-header"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        className="projects__header"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <p className="section-label">Portfolio</p>
-                        <h1 className="section-title">Projects</h1>
-                        <p className="section-subtitle">
-                            Research projects, CTF write-ups, and open-source tools.
-                        </p>
+                        <h1 className="projects__title">
+                            <span className="projects__title-hash">#</span> Deployed_Operations
+                        </h1>
+                        <div className="projects__title-line" />
                     </motion.div>
 
-                    {/* ── Project Cards ─────────────────────────────── */}
+                    {/* ── Cards Grid ──────────────────────── */}
                     <div className="projects__grid">
                         {PROJECTS.map((p, i) => (
-                            <div key={p.id} className="projects__card-wrapper">
-                                <motion.div
-                                    className="project-card glass-card"
-                                    custom={i}
-                                    initial="hidden"
-                                    whileInView="visible"
-                                    viewport={{ once: true, amount: 0.3 }}
-                                    variants={cardVariants}
-                                    whileHover={{
-                                        scale: 1.03,
-                                        rotateX: -2,
-                                        rotateY: 3,
-                                        transition: { duration: 0.3 },
-                                    }}
-                                    whileTap={{ scale: 0.98 }}
-                                    onClick={() => setSelected(p)}
-                                    style={{ cursor: 'pointer' }}
-                                >
-                                    <div className="project-card__glow" />
-                                    <div className="project-card__number">0{i + 1}</div>
-                                    <div className="project-card__body">
-                                        <h2 className="project-card__title">{p.title}</h2>
-                                        <p className="project-card__desc">{p.description}</p>
-                                        <div className="project-card__tags">
-                                            {p.tags.map(t => (
-                                                <span key={t} className="cyber-badge">{t}</span>
+                            <motion.div
+                                key={p.id}
+                                className="op-card"
+                                custom={i}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true, amount: 0.2 }}
+                                variants={cardVariants}
+                                whileHover={{ scale: 1.015, transition: { duration: 0.3 } }}
+                            >
+                                {/* Terminal preview */}
+                                <div className="op-card__preview">
+                                    <div className="op-card__preview-dots">
+                                        <span /><span /><span />
+                                    </div>
+                                    <div className="op-card__preview-body">
+                                        <div className="op-card__preview-heading">{p.preview.heading}</div>
+                                        <ul className="op-card__preview-list">
+                                            {p.preview.items.map(item => (
+                                                <li key={item}>
+                                                    <span className="op-card__preview-icon">▸</span> {item}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                {/* Card content */}
+                                <div className="op-card__content">
+                                    <div className="op-card__top-row">
+                                        <h2 className="op-card__name">
+                                            <span className="op-card__lock">🔒</span> {p.title}
+                                        </h2>
+                                        <a
+                                            href={p.github_url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="op-card__ext-link"
+                                            onClick={e => e.stopPropagation()}
+                                            aria-label="Open on GitHub"
+                                        >
+                                            ↗
+                                        </a>
+                                    </div>
+
+                                    <div className="op-card__date">
+                                        <span className="op-card__date-icon">📅</span> {p.date}
+                                    </div>
+
+                                    <ul className="op-card__bullets">
+                                        {p.bullets.map((b, bi) => (
+                                            <li key={bi}>
+                                                <span className="op-card__bullet-chevron">›</span>
+                                                <span>{b}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    <div className="op-card__tech-row">
+                                        <span className="op-card__tech-label">TECH:</span>
+                                        <div className="op-card__tech-badges">
+                                            {p.tech.map(t => (
+                                                <span key={t} className="op-card__tech-badge">{t}</span>
                                             ))}
                                         </div>
                                     </div>
-                                    <div className="project-card__hint">
-                                        <span>Click to expand</span>
-                                        <span className="project-card__hint-icon">↗</span>
-                                    </div>
-                                </motion.div>
-
-                                {/* CTA button OUTSIDE the card */}
-                                <motion.a
-                                    href={p.github_url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="project-card__cta"
-                                    initial={{ opacity: 0, y: 10 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: i * 0.15 + 0.3, duration: 0.4 }}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.96 }}
-                                    onClick={e => e.stopPropagation()}
-                                >
-                                    <span className="project-card__cta-arrow">⟶</span>
-                                    Explore Code
-                                </motion.a>
-                            </div>
+                                </div>
+                            </motion.div>
                         ))}
                     </div>
 
@@ -129,11 +153,11 @@ export default function Projects() {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.5, duration: 0.6 }}
+                        transition={{ delay: 0.6, duration: 0.6 }}
                     >
                         <div className="terminal-box">
                             <p className="projects__soon-text">
-                                <span className="projects__soon-cursor">▌</span> More projects coming soon — stay tuned.
+                                <span className="projects__soon-cursor">▌</span> More operations incoming — stay tuned.
                             </p>
                         </div>
                     </motion.div>
@@ -141,15 +165,14 @@ export default function Projects() {
                 </div>
             </section>
 
-            {/* ── Expand Modal ──────────────────────────────── */}
+            {/* ── Detail Modal ────────────────────────── */}
             <AnimatePresence>
                 {selected && (
                     <motion.div
                         className="project-modal__overlay"
-                        variants={overlayVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="exit"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                         onClick={() => setSelected(null)}
                     >
                         <motion.div
@@ -161,14 +184,14 @@ export default function Projects() {
                             onClick={e => e.stopPropagation()}
                         >
                             <button className="project-modal__close" onClick={() => setSelected(null)}>✕</button>
-                            <div className="project-modal__header">
-                                <span className="project-modal__badge">PROJECT</span>
-                                <h2 className="project-modal__title">{selected.title}</h2>
-                            </div>
-                            <p className="project-modal__desc">{selected.details || selected.description}</p>
+                            <span className="project-modal__badge">PROJECT</span>
+                            <h2 className="project-modal__title">{selected.title}</h2>
+                            <ul className="project-modal__bullets">
+                                {selected.bullets.map((b, i) => <li key={i}>{b}</li>)}
+                            </ul>
                             <div className="project-modal__tags">
-                                {selected.tags.map(t => (
-                                    <span key={t} className="cyber-badge">{t}</span>
+                                {selected.tech.map(t => (
+                                    <span key={t} className="op-card__tech-badge">{t}</span>
                                 ))}
                             </div>
                             <a
@@ -177,7 +200,7 @@ export default function Projects() {
                                 rel="noopener noreferrer"
                                 className="project-modal__link"
                             >
-                                <span>⟶</span> Explore Code on GitHub
+                                ⟶ Explore Code on GitHub
                             </a>
                         </motion.div>
                     </motion.div>
