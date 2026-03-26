@@ -3,32 +3,25 @@ import './About.css'
 
 const TIMELINE = [
     {
-        date: 'Future',
-        title: 'XXX',
-        org: 'Independent',
-        description: 'Specialising in binary exploitation, red team operations, and AI-assisted security research. Building public portfolio and open-source tooling.',
-        tags: ['binary-exploitation', 'red-team', 'python', 'AI'],
-    },
-    {
-        date: 'Future',
-        title: 'XXX',
-        org: 'Consulting',
-        description: 'Conducted web and network penetration tests, delivered OWASP Top 10 assessments, and authored detailed remediation reports for enterprise clients.',
-        tags: ['web-pentest', 'owasp', 'burp-suite', 'reporting'],
-    },
-    {
-        date: 'Future',
-        title: 'XXX',
-        org: 'Enterprise SOC',
-        description: 'Threat hunting, incident response, SIEM tuning (Splunk/ELK), and malware triage. First responder for critical incidents.',
-        tags: ['soc', 'splunk', 'incident-response', 'malware-analysis'],
-    },
-    {
-        date: '2023 – 2027',
-        title: 'B.tech. Computer Science',
-        org: 'University',
-        description: 'Graduated with focus on systems programming and cryptography. Active CTF competitor from sophomore year.',
+        date: "Aug' 23 – Present",
+        title: 'B.Tech Computer Science & Engineering',
+        org: 'Lovely Professional University, Punjab, India',
+        description: 'CGPA: 7.0. Focus on systems programming, cryptography, and cybersecurity. Active CTF competitor.',
         tags: ['computer-science', 'cryptography', 'CTF', 'C', 'Assembly'],
+    },
+    {
+        date: "Apr' 21 – Mar' 22",
+        title: 'Intermediate',
+        org: 'Jawahar Navodaya Vidyalaya, Jammu, J&K',
+        description: 'Percentage: 78%',
+        tags: ['intermediate', 'science'],
+    },
+    {
+        date: "Apr' 19 – Mar' 20",
+        title: 'Matriculation',
+        org: 'Jawahar Navodaya Vidyalaya, Jammu, J&K',
+        description: 'Percentage: 88.5%',
+        tags: ['matriculation'],
         isLast: true,
     },
 ]

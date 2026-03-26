@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import frogImg from '@/assets/frog2.png'
-import virusImg from '@/assets/virus.png'
 import './Home.css'
 
 export default function Home() {
@@ -44,12 +43,7 @@ export default function Home() {
                 </motion.div>
             </section>
 
-            {/* Floating Virus Images between Hero and Intro Card */}
-            <div className="floating-viruses">
-                <img src={virusImg} alt="Virus asset" className="virus virus-left" />
-                <img src={virusImg} alt="Virus asset" className="virus virus-center" />
-                <img src={virusImg} alt="Virus asset" className="virus virus-right" />
-            </div>
+
 
             {/* ── Flip Card Introduction Section ──────────────────────────────────── */}
             <section className="intro-section">
@@ -63,7 +57,7 @@ export default function Home() {
                             </div>
                             <div className="id-card-info">
                                 <h2 className="id-card-name">Tarun Singh</h2>
-                                <p className="id-card-role">Security Engineer <br /><span><a href="mailto:taaaruunnn@gmail.com">taaaruunnn@gmail.com</a> | 7006562435</span></p>
+                                <p className="id-card-role">Aspiring Pentester <br /><span><a href="mailto:taaaruunnn@gmail.com">taaaruunnn@gmail.com</a> | 7006562435</span></p>
                                 <p className="id-card-desc">
                                     I build secure systems, break insecure ones, and document everything. Specialized in binary exploitation, web penetration testing, and AI-assisted security research.
                                 </p>
@@ -73,7 +67,7 @@ export default function Home() {
                             </div>
                             <div className="id-card-footer">
                                 <div className="id-card-brand">cybersec<span>.port</span></div>
-                                <div className="id-card-domain">Reverse Engineering & Exploit Dev</div>
+                                <div className="id-card-domain">Exploit Dev & Penetration Testing</div>
                             </div>
                         </div>
 

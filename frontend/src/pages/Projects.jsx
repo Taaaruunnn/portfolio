@@ -5,6 +5,23 @@ import './Projects.css'
 
 const ALL_TAG = 'all'
 
+const FEATURED_PROJECTS = [
+    {
+        id: 'madad-karo',
+        title: 'Madad Karo Foundation',
+        description: 'A web platform for a charitable foundation that connects donors and volunteers to social causes. Built to streamline donations, volunteer sign-ups, and community outreach.',
+        tags: ['web-dev', 'social-impact', 'full-stack'],
+        github_url: 'https://github.com/Taaaruunnn/Madad-Kar-Foundation/tree/main/madad%20kar%20foundation',
+    },
+    {
+        id: 'watchdog',
+        title: 'WatchDog',
+        description: 'A system monitoring and security watchdog tool that tracks processes, network connections, and suspicious activity on a host machine in real time.',
+        tags: ['security', 'monitoring', 'python'],
+        github_url: 'https://github.com/Taaaruunnn/WatchDog',
+    },
+]
+
 export default function Projects() {
     const [projects, setProjects] = useState([])
     const [loading, setLoading] = useState(true)
@@ -55,6 +72,28 @@ export default function Projects() {
                         <p className="section-subtitle">
                             Research projects, CTF write-ups, and open-source tools.
                         </p>
+                    </div>
+
+                    {/* Featured Projects (always visible) */}
+                    <div className="grid-cards" style={{ marginBottom: 'var(--space-8)' }}>
+                        {FEATURED_PROJECTS.map((p, i) => (
+                            <div key={p.id} className={`glass-card project-card animate-fade-up delay-${(i + 1) * 100}`}>
+                                <div className="project-card__body">
+                                    <h2 className="project-card__title">{p.title}</h2>
+                                    <p className="project-card__desc">{p.description}</p>
+                                    <div className="project-card__tags">
+                                        {p.tags.map(t => (
+                                            <span key={t} className="cyber-badge">{t}</span>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="project-card__links">
+                                    <a href={p.github_url} target="_blank" rel="noopener noreferrer" className="project-card__link">
+                                        GitHub →
+                                    </a>
+                                </div>
+                            </div>
+                        ))}
                     </div>
 
                     {/* Loading */}

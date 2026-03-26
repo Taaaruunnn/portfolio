@@ -8,7 +8,6 @@ const CATEGORIES = [
         skills: [
             { name: 'Buffer Overflow / ROP', level: 0 },
             { name: 'Web Exploitation', level: 0 },
-            { name: 'Reverse Engineering', level: 0 },
             { name: 'Social Engineering', level: 0 },
             { name: 'CTF Challenges', level: 0 },
         ],
@@ -18,10 +17,8 @@ const CATEGORIES = [
         label: '🛡 Defensive',
         skills: [
             { name: 'Incident Response', level: 0 },
-            { name: 'Threat Hunting', level: 0 },
             { name: 'SIEM / Log Analysis', level: 0 },
             { name: 'Malware Analysis', level: 0 },
-            { name: 'Hardening & SSDLC', level: 0 },
         ],
     },
     {
@@ -41,7 +38,6 @@ const CATEGORIES = [
         skills: [
             { name: 'Python', level: 0 },
             { name: 'C / C++', level: 0 },
-            { name: 'x86-64 Asm', level: 0 },
             { name: 'Java', level: 0 },
             { name: 'Bash', level: 0 },
         ],
