@@ -73,7 +73,6 @@ function SkillBar({ name, level }) {
         <div className="skills__skill">
             <div className="skills__skill-meta">
                 <span className="skills__skill-name">{name}</span>
-                <span className="skills__skill-pct neon-text">{level}%</span>
             </div>
             <div className="skills__bar-track">
                 <div ref={barRef} className="skills__bar" style={{ '--progress-target': '0%' }} />
