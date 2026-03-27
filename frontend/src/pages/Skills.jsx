@@ -6,7 +6,6 @@ const CATEGORIES = [
         id: 'offensive',
         label: '⚔️ Offensive',
         skills: [
-            { name: 'Buffer Overflow / ROP', level: 0 },
             { name: 'Web Exploitation', level: 0 },
             { name: 'Social Engineering', level: 0 },
             { name: 'CTF Challenges', level: 0 },
@@ -25,9 +24,7 @@ const CATEGORIES = [
         id: 'tools',
         label: '🔧 Tools',
         skills: [
-            { name: 'GDB + pwndbg', level: 0 },
             { name: 'Burp Suite', level: 0 },
-            { name: 'Ghidra / IDA', level: 0 },
             { name: 'Metasploit', level: 0 },
             { name: 'Wireshark / tcpdump', level: 0 },
         ],

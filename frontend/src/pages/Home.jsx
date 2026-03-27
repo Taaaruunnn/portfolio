@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import frogImg from '@/assets/frog2.png'
+import profileImg from '@/assets/profile.png'
 import './Home.css'
 
 export default function Home() {
@@ -53,7 +53,7 @@ export default function Home() {
                         {/* Front: ID Card Style */}
                         <div className="flip-card-front profile-id-card">
                             <div className="id-card-photo-wrapper">
-                                <img src={frogImg} alt="Profile avatar" className="id-card-photo" />
+                                <img src={profileImg} alt="Tarun Singh profile avatar" className="id-card-photo" />
                             </div>
                             <div className="id-card-info">
                                 <h2 className="id-card-name">Tarun Singh</h2>
